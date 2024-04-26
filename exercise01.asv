@@ -1,0 +1,6 @@
+function res = taylor_arctan(x, n)
+    res = 0;
+    for i = 0:n
+       res = res + (-1)^n * x^(2*i+1)/ (2);
+    end
+end
