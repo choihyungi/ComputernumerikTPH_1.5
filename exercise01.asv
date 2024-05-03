@@ -1,6 +1,20 @@
-function res = taylor_arctan(x, n)
-    res = 0;
-    for i = 0:n
-       res = res + (-1)^n * x^(2*i+1)/ (2);
-    end
+clear all;
+close all;
+
+%5.1
+%
+
+%5.2
+N = 10;
+xmin = 0;
+xmax = 1;
+
+xs = xmin:xmax/N:xmax;
+ys = zeros(length(xs), 1);
+for k = 1:length(xs)
+    x = xs(k);
+    ys(k) = minimum_n(x);
 end
+
+figure
+plot(xs, ys);
