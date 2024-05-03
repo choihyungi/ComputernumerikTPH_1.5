@@ -1,0 +1,5 @@
+% Taylorreihe von arctan
+function termN = taylorN_arctan(x, n)
+       term = 2*i + 1;
+       termN = (-1)^i * x^term/term;
+end
