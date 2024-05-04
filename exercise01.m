@@ -4,9 +4,9 @@ close all;
 %5.1
 
 %5.2
-N = 30;
+N = 10;
 xmin = 0;
-xmax = 1;
+xmax = 0.9;
 
 xs = xmin:xmax/N:xmax;
 ys = zeros(length(xs), 1);
@@ -21,13 +21,15 @@ plot(xs, ys);
 %5.3
 xs = zeros(N, 1);
 ys = zeros(N, 1);
+ns = zeros(N, 1);
 for k = 1:N
-    x = 1 - 2^(-k);
+    x = xmax - 2^(-k);
     xs(k) = x;
     ys(k) = minimum_n(x);
+    ns(k) = ausverfahrensfehler(x);
 end
 
 figure
-plot(xs, ys);
+plot(xs, ys, xs, ys);
 
 
