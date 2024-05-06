@@ -1,0 +1,33 @@
+clear all;
+close all;
+
+N = 10;
+xmin = 0;
+xmax = 0.9;
+
+%5.1
+
+%5.2
+[xs2, ns2, ers2] = exc_52(xmin, xmax, N);
+
+figure
+plot(xs2, ns2);
+
+%5.3
+[xs3, ns3_taylor, ns3_ana, ers3]= exc_53(xmax, N);
+
+figure
+plot(xs3, ns3_taylor, ', xs3, ns3_ana);
+
+%5.4
+ys = zeros(N, 1);
+for k = 1:N
+    x = xs3(k);
+    n = n_aus_verfahrensfehler(x);
+    ys(k) = minimum_n_reversetaylor(x, n);
+end
+
+figure
+plot(xs3, ys)
+
+

@@ -8,41 +8,28 @@ xmax = 0.9;
 %5.1
 
 %5.2
-xs2 = xmin:xmax/N:xmax;
-ns2 = zeros(length(xs2), 1);
-ers2 = zeros(length(xs2), 1);
-for k2 = 1:length(xs2)
-    x2 = xs2(k2);
-    [ns2(k2), ers2(k2)] = minimum_n_taylor(x2);
-end
+[xs2, ns2, ers2] = exc_52(xmin, xmax, N);
 
 figure
-plot(xs2, ns2);
+plot(xs2, ns2, 'DisplayName', 'n < 100eps via Taylor');
 
 %5.3
-xs3 = zeros(N, 1);  % x values
-ns3_taylor = zeros(N, 1);  % n calculated from taylor
-ns3_ana = zeros(N, 1);
-ers3 = zeros(length(xs3), 1);
-for k = 1:N
-    x = xmax - 2^(-k);
-    xs3(k) = x;
-    [ns3_taylor(k), ers3(k)] = minimum_n_taylor(x);
-    ns3_ana(k) = n_aus_verfahrensfehler(x);
-end
+[xs3, ns3_taylor, ns3_ana, ers3]= exc_53(xmax, N);
 
 figure
-plot(xs3, ns3_taylor, xs3, ns3_ana);
+plot(xs3, ns3_taylor, 'DisplayName','n < 100eps via taylor');
+hold on;
+plot(xs3, ns3_ana, 'DisplayName', 'n calculated from Verfahrensfehler');
+hold off;
+lgd = legend;
 
 %5.4
-ys = zeros(N, 1);
-for k = 1:N
-    x = xs3(k);
-    n = n_aus_verfahrensfehler(x);
-    ys(k) = minimum_n_reversetaylor(x, n);
-end
+[xs4, ns4_ana, ers4] = exc_54(xs3, N);
 
 figure
-plot(xs3, ys)
+plot(xs4, ers4, "DisplayName", "error reverse");
+hold on;
+plot(xs3, )
+
 
 
