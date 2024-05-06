@@ -1,9 +1,9 @@
 clear all;
 close all;
 
-N = 100;
-xmin = 0;
-xmax = 0.99;
+N = 1000;
+xmin = 0.0;
+xmax = 0.999;
 
 %5.1
 
@@ -36,5 +36,11 @@ lgd = legend;
 
 %5.5
 
-
+xs5 = [];
+for i = 1 : length(xs4)
+    if xs4(i) > 0.99
+        xs5 = [xs5 xs4(i)];
+    end
+    
+end
 
