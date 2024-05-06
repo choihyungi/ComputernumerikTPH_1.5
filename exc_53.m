@@ -1,4 +1,4 @@
-function [xs, ns_taylor, ns_ana, ers_taylor] = exc_53(xmax, N)
+function [xs, ns_taylor, ns_ana, ers_taylor, ers_ana] = exc_53(xmax, N)
     xs = zeros(N, 1);           % x values
     ns_taylor = zeros(N, 1);    % n values recurved from taylor
     ns_ana = zeros(N, 1);       % n values calculated from Verfahrensfehlerungleichung
