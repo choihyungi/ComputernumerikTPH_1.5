@@ -1,46 +1,36 @@
 clear all;
 close all;
 
-N = 1000;
+% Parameters
+kmax = 17;
 xmin = 0.0;
-xmax = 0.999;
+xmax = 1;
 
-%5.1
+% basic Values
+xs = xvalues(xmax, kmax);
+disp(xs);
+ns_num = n_numerisch(xs);
+disp("ns_num, ok");
+ns_ana = n_analytisch(xs);
+disp("ns_ana, ok");
 
-%5.2
-[xs2, ns2, ers2] = exc_52(xmin, xmax, N);
+% Taylor with given n values
+[arctans, ers] = taylor_arctan(xs, ns_num);
+% Taylor reverse
+[rev_arctans, rev_ers] = reversetaylor_arctan(xs, ns_num);
+
 
 figure
-plot(xs2, ns2, 'DisplayName', 'n < 100eps via Taylor');
-
-%5.3
-[xs3, ns3_taylor, ns3_ana, ers3_taylor, ers3_ana]= exc_53(xmax, N);
-
-figure
-plot(xs3, ns3_taylor, 'DisplayName','n < 100eps via taylor');
+plot(xs, arctans, 'DisplayName', 'Arctan(x) via Taylor');
 hold on;
-plot(xs3, ns3_ana, 'DisplayName', 'n calculated from Verfahrensfehler');
+plot(xs, rev_arctans, 'DisplayName', 'Arctan(x) via reverse Taylor');
 hold off;
 lgd = legend;
 
-%5.4
-[xs4, ns4_ana, ers4] = exc_54(xs3, N);
-
 figure
-plot(xs4, ers4, "DisplayName", "error reverse");
+plot(xs, ers, 'DisplayName', 'rel. Error via Taylor')
 hold on;
-plot(xs3, ers3_taylor, "DisplayName", "error normal taylor < 100esp");
-plot(xs3, ers3_ana, "DisplayName", "error normal n from Verfahrensfehler")
+plot(xs, rev_ers, 'DisplayName', 'rel. Error via reverse Taylor')
 hold off;
-lgd = legend;
-
-%5.5
-
-xs5 = [];
-for i = 1 : length(xs4)
-    if xs4(i) > 0.99
-        xs5 = [xs5 xs4(i)];
-    end
-    
-end
+lgd = legend
 
