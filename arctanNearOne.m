@@ -9,4 +9,5 @@ function arctan = arctanNearOne(delta)
     arctan = arctan + delta^9/288;
     arctan = arctan - delta^10/320;
     arctan = arctan + delta^11/704;
+    
 end
