@@ -5,6 +5,6 @@ function ns = n_analytisch(xs)
     for k = 1 :  length(xs)
         x = xs(k);
         n = log(100*eps/(1+x^2)) / (2*log(x)) - 1;
-        ns(k) = n;
+        ns(k) = fix(n);
     end
 end
