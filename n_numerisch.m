@@ -9,7 +9,7 @@ function ns = n_numerisch(xs)
         real = atan(x);
         while res > 100*eps
             n = n+1;
-            res = x^(2*n+3)/(2*n+3)*real;
+            res = (x^(2*n+3)/(2*n+3)) / real;
         end
         ns(k) = n;
     end
