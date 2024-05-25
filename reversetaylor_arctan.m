@@ -1,5 +1,5 @@
 function [arctans, ers] = reversetaylor_arctan(xs, ns)
-    % Taylorreihe von arctan
+    % Taylorapproximation of arctan around 0 in reverse
     arctans = zeros(length(xs),1);
     ers = zeros(length(xs), 1);
     for k = 1 : length(xs)

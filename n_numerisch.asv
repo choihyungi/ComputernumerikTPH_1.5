@@ -5,11 +5,8 @@ function ns = n_numerisch(xs)
     for k = 1 : length(xs)
         res = 1;
         o = xs(k);
-        if abs(o)<=1
-            x = abs(o);
-        else
-            x = abs(1/o);
-        end
+        if
+            
         n = -1;
         real = atan(x);
         if real == 0
