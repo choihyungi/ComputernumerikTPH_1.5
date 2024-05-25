@@ -9,18 +9,17 @@ kmax = 18;
 xmin = 0;
 xmax = 1;
 
-%xs = xvalues(xmax, kmax);
-xs = linspace(xmin, xmax, kmax);
+xs = xvalues(xmax, kmax);
+%xs = linspace(xmin, xmax, kmax);
 
 %-----------------------------
 % minimum n Values to each x
-%-----------------------------
+%----------------------------
 %ns_num = n_numerisch(xs);
-%disp("ns_num, ok");
 ns_ana = n_analytisch(xs);
-disp("ns_ana, ok");
 
 ns = ns_ana;
+disp('ns ok')
 
 % plot necessary n-terms
 figure;
@@ -73,5 +72,51 @@ plot(xs(idx_strt:idx_end), rev_ers1(idx_strt:idx_end), 'DisplayName', 'reverse d
 title('relative error of Taylorapproximation(1) of ArcTan');
 xlabel('x');
 ylabel('relative error');
+legend;
+hold off;
+
+%-----------------------------
+% selective Taylorapprox
+%-----------------------------
+[arctans3,ers3] = fulltaylor_arctan(xs, ns);
+
+%-----------------------------
+% Lagrangeapprox
+%-----------------------------
+refmin = 0;
+refmax = 1;
+refpts = 300;
+refs1 = linspace(refmin, refmax, refpts);
+refs2 = chebishevnodes(refpts);
+
+%[arctans4, ers4] = lagrangeapprox(xs, refs1);
+[arctans5, ers5] = lagrangeapprox(xs, refs2);
+
+figure
+hold on;
+idx_strt = 1;
+idx_end = kmax;
+
+plot(xs(idx_strt:idx_end), ers3(idx_strt:idx_end), "DisplayName", 'selective Taylorapproximation')
+%plot(xs(idx_strt:idx_end), ers4(idx_strt:idx_end), "DisplayName", 'Lagrangeapproximation equidistant ref points')
+plot(xs(idx_strt:idx_end), ers5(idx_strt:idx_end), "DisplayName", 'Lagrangeapproximation Chebishev ref points')
+
+title('relative error of different Approximations of arctan');
+xlabel('x');
+ylabel('relative error');
+legend;
+hold off;
+
+figure
+hold on;
+idx_strt = 1;
+idx_end = kmax;
+
+plot(xs(idx_strt:idx_end), arctans3(idx_strt:idx_end), "DisplayName", 'selective Taylorapproximation')
+%plot(xs(idx_strt:idx_end), arctans4(idx_strt:idx_end), "DisplayName", 'Lagrangeapproximation equidistant ref points')
+plot(xs(idx_strt:idx_end), arctans5(idx_strt:idx_end), "DisplayName", 'Lagrangeapproximation Chebishev ref points')
+title('arctan of different Approximations');
+xlabel('x');
+ylabel('arctan');
 legend;
 hold off;

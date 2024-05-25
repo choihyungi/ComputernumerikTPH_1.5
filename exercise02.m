@@ -16,12 +16,11 @@ xs = linspace(xmin, xmax, kmax);
 % minimum n Values to each x
 %-----------------------------
 ns_num = n_numerisch(xs);
-disp("ns_num, ok");
 ns_ana = n_analytisch(xs);
-disp("ns_ana, ok");
 
-ns = ns_num;
+ns = ns_ana;
 ns = ns + 1;
+disp('ns, ok')
 
 % plot necessary n-terms
 figure;
