@@ -15,8 +15,8 @@ xs = linspace(xmin, xmax, kmax);
 %-----------------------------
 % minimum n Values to each x
 %-----------------------------
-ns_num = n_numerisch(xs);
-ns_ana = n_analytisch(xs);
+[ns_num, ers_num] = n_numerisch(xs);
+[ns_ana, ers_ana] = n_analytisch(xs);
 
 ns = ns_ana;
 ns = ns + 1;

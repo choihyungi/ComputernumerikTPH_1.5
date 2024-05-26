@@ -1,4 +1,4 @@
-function [ns, ers] = n_analytisch(xs)
+function ns = n_analytisch(xs)
     % n analytisch
     % |arctan(x) - taylorreihe(arctan(x))| <= x^(2n+3)/(2n+3)
     vmax = length(xs);
@@ -11,11 +11,10 @@ function [ns, ers] = n_analytisch(xs)
         else
             x = abs(1/o);
         end
-        exact = atan(x);
+        exact = ata
         n = log(100*eps/(1+x^2)) / (2*log(x)) - 1;
         er = (x^(2*n+3)/(2*n+3))/exact;
-        
-        ers(k) = er;
         ns(k) = fix(n);
+
     end
 end

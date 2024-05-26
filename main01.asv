@@ -44,7 +44,7 @@ hold off;
 figure
 hold on;
 idx_strt = 1;
-idx_end = fix(kmax*0.8);
+idx_end = fix(kmax*0.9);
 plot(xs(idx_strt:idx_end), ers_ns(idx_strt:idx_end), 'DisplayName', 'prediction via Verfahrensfehler');
 plot(xs(idx_strt:idx_end), ers_taylor0(idx_strt:idx_end), 'DisplayName', 'normal direction');
 plot(xs(idx_strt:idx_end), rev_ers_taylor0(idx_strt:idx_end), 'DisplayName', 'reverse direction');
