@@ -1,4 +1,4 @@
-function f = lagrangeinterpolation(xs)
+function f = lagrangepolynom(xs)
     syms x;
     n = length(xs);
     ys = zeros(n,1);

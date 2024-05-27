@@ -5,20 +5,21 @@ close all;
 % x Values
 %-----------------------------
 % Parameters
-kmax = 100;
+xpts = 100;
 xmin = -10;
 xmax = 10;
 
 %xs = xvalues(xmax, kmax);
-xs = linspace(xmin, xmax, kmax);
+xs = linspace(xmin, xmax, xpts);
 
 %-----------------------------
 % minimum n Values to each x
 %-----------------------------
-[ns_num, ers_num] = n_numerisch(xs);
-[ns_ana, ers_ana] = n_analytisch(xs);
+[ns_num, ers_num] = n_numerical(xs);
+[ns_ana, ers_ana] = n_analytical(xs);
 
-ns = ns_ana;
+ns = ns_num;        % n values with which we will work
+ers_ns = ers_num;
 ns = ns + 1;
 disp('ns, ok')
 
@@ -38,23 +39,27 @@ hold off;
 [arctans, ers] = fulltaylor_arctan(xs, ns);
 
 figure
-hold on;
-idx_strt = 1;
-idx_end = kmax;
-plot(xs(idx_strt:idx_end), arctans(idx_strt:idx_end))
-
-title('Taylorapproximation of ArcTan');
-xlabel('x');
-ylabel('arctan');
-hold off;
+    idx_strt = 1;
+    idx_end = length(xs);
+    
+    hold on;
+    plot(xs(idx_strt:idx_end), arctans(idx_strt:idx_end))
+    
+    title('Taylorapproximation of ArcTan');
+    xlabel('x');
+    ylabel('arctan');
+    hold off;
 
 figure
-hold on;
-idx_strt = 1;
-idx_end = kmax;
-plot(xs(idx_strt:idx_end), ers(idx_strt:idx_end))
-
-title('relative error of Taylorapproximation of ArcTan');
-xlabel('x');
-ylabel('relative error');
-hold off;
+    idx_strt = 1;
+    idx_end = length(xs);
+    
+    hold on;
+    plot(xs(idx_strt:idx_end), ers(idx_strt:idx_end), 'DisplayName','Taylorapproximation')
+    plot(xs(idx_strt:idx_end), ers_ns(idx_strt:idx_end), 'DisplayName','Verfahrensfehler')
+    
+    title('relative error of Taylorapproximation of ArcTan');
+    xlabel('x');
+    ylabel('relative error');
+    legend;
+    hold off;

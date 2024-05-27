@@ -17,12 +17,12 @@ function [arctans, ers] = fulltaylor_arctan(xs, ns)
         comp = atan(o);
         if(x<0.75)
             for i = ns(k) : (-1) : 0
-            arctan = arctan + nglied_taylor_arctan(x,i);
+                arctan = arctan + nterm_taylor0_arctan(x,i);
             end
         else
             delta = x - 1;
             for i = ns(k) : (-1) : 1
-                arctan = arctan + nglied_taylor_arctan_nearOne(delta,i);
+                arctan = arctan + nterm_taylor1_arctan(delta,i);
             end
             arctan = arctan + pi/4;
         end

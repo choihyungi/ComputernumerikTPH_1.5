@@ -2,7 +2,7 @@ function [arctans, ers] = lagrangeapprox(xs, refs)
     max = length(xs);
     arctans = zeros(max,1);
     ers = zeros(max,1);
-    p = lagrangeinterpolation(refs);
+    p = lagrangepolynom(refs);
     
     for i = 1 : max
         x = xs(i);
