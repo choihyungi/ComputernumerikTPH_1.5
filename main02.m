@@ -29,7 +29,7 @@ hold on;
 plot(xs, ns, 'DisplayName', 'n values');
 title('necessary n-terms for relative error < 100 eps');
 xlabel('x');
-ylabel('n');
+ylabel('n(x)');
 legend;
 hold off;
 
@@ -47,7 +47,7 @@ figure
     
     title('Taylorapproximation of ArcTan');
     xlabel('x');
-    ylabel('arctan');
+    ylabel('arctan(x)');
     hold off;
 
 figure
@@ -56,7 +56,7 @@ figure
     
     hold on;
     plot(xs(idx_strt:idx_end), ers(idx_strt:idx_end), 'DisplayName','Taylorapproximation')
-    plot(xs(idx_strt:idx_end), ers_ns(idx_strt:idx_end), 'DisplayName','Verfahrensfehler')
+    %plot(xs(idx_strt:idx_end), ers_ns(idx_strt:idx_end), 'DisplayName','Verfahrensfehler')
     
     title('relative error of Taylorapproximation of ArcTan');
     xlabel('x');

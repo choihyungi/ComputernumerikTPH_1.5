@@ -27,9 +27,10 @@ ns = ns_num;        % n values
 ers_ns = ers_num;   % relative error according to Verfahrensfehler
 disp('ns ok');
 
+
 % plot n-terms
 figure;
-    idx_strt = 1;
+    idx_strt = 1;%fix(length(xs) * 0.5);
     idx_end = fix(length(xs)*0.4); % 1 for fullrange; 0.4 for relevant range
     
     hold on;
@@ -37,9 +38,10 @@ figure;
     plot(xs(idx_strt:idx_end), ns_ana(idx_strt:idx_end), 'DisplayName', 'n-terms analytical');
     title('necessary n-terms for relative error < 100 eps');
     xlabel('x');
-    ylabel('n');
+    ylabel('n(x)');
     legend;
     hold off;
+
 
 %-----------------------------
 % Taylorsequence around 0untitled
@@ -49,8 +51,8 @@ figure;
 
 %plot relative Error
 figure
-    idx_strt = 1;
-    idx_end = fix(length(xs)*0.7);
+    idx_strt = 1; %fix(length(xs)*0.17);
+    idx_end = fix(length(xs)*0.7); % relevant range 0.7
     
     hold on;
     plot(xs(idx_strt:idx_end), ers_ns(idx_strt:idx_end), 'DisplayName', 'prediction via Verfahrensfehler');
@@ -71,7 +73,7 @@ figure
 
 %plot relative Error to arctan(x)
 figure
-    idx_strt = fix(length(xs)*0.15); %fix(length(xs)*0.15) für relevante range
+    idx_strt = fix(length(xs)*0.13); %fix(length(xs)*0.15) für relevante range
     idx_end = length(xs);
     
     hold on;
@@ -88,6 +90,7 @@ figure
 %-----------------------------
 % Compare Taylorapprox(0) and Taylorapprox(1)
 %-----------------------------
+
 figure
     idx_strt = fix(length(xs)*0.15);
     idx_end = length(xs);
@@ -105,6 +108,7 @@ figure
     legend;
     hold off;
 
+
 %-----------------------------
 % selective Taylorapprox
 %-----------------------------
@@ -115,7 +119,7 @@ figure
 %-----------------------------
 refmin = 0;
 refmax = 1;
-refpts1 = 20;   % max approximation at 20
+refpts1 = 20;   % max approximation at 20, rel 0.3
 refs1 = linspace(refmin, refmax, refpts1);
 refpts2 = 36;   % min 36 to be comparable to taylor
 refs2 = chebishevnodes(refpts2);
@@ -125,7 +129,7 @@ refs2 = chebishevnodes(refpts2);
 
 figure
     idx_strt = 1;
-    idx_end = fix(length(xs)*0.3); % 0.5 for rel
+    idx_end = fix(length(xs)*1); % 0.5 for rel
     
     hold on;
     plot(xs(idx_strt:idx_end), ers_taylor(idx_strt:idx_end), "DisplayName", 'selective Taylorapproximation')
@@ -137,7 +141,7 @@ figure
     ylabel('relative error');
     legend;
     hold off;
-
+%{
 figure
     idx_strt = 1;
     idx_end = length(xs);
@@ -152,3 +156,4 @@ figure
     ylabel('arctan(x)');
     legend;
     hold off;
+%}
